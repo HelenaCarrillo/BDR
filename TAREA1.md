@@ -49,3 +49,7 @@ Para este curso he elegido utilizar MySQL ya que es gratuito y es el sistema que
 MySQL es un software de código abierto propiedad de Oracle. 
 
 Entre otras de las ventajas que tiene el uso de MySQL se encuentra el hecho de que es fácil de instalar, rápido, escalable y compatible con una gran variedad de sistemas operativos. 
+
+-----
+-----
+### __REFERENCIAS__
