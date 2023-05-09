@@ -3,9 +3,9 @@
 ## BASE DE DATOS ELEGIDA
 La base de datos a utilizar es la llamada **International Chess Statistics 2022** a la cual se puede acceder en la siguiente [liga](https://www.kaggle.com/datasets/deepcontractor/international-chess-statistics-2022).
 
-La base de datos cuenta con dos archivos csv: *Complete_Players_Database.csv* y *International_Chess_Stats.csv*.
+La base de datos cuenta con dos archivos .csv: *"Complete_Players_Database.csv"* y *"International_Chess_Stats.csv"*.
 
-El archivo *Complete_Players_Database.csv* tiene los datos de todos los jugadores del mundo que tienen un rating mayor a 1000. Este archivo cuenta con 7 columnas:
+El archivo *"Complete_Players_Database.csv"* tiene los datos de todos los jugadores del mundo que tienen un rating mayor a 1000. Este archivo cuenta con 7 columnas:
 - __Country Rank:__ _[Texto]._ El lugar que el jugador tiene en su respectivo país. 
 - __Name:__ _[Texto]._ El nombre del jugador. 
 - __Title:__ _[Texto]._ Hace referencia al título que el jugador posee. Los titulos que se enlistan en la base son:
@@ -21,7 +21,7 @@ El archivo *Complete_Players_Database.csv* tiene los datos de todos los jugadore
 - __Age:__ _[Entero]._ Edad del jugador.
 - __K-Factor:__ _[Entero]._ Este muestra el número máximo de puntos de que un jugador puede ganar o perder en una partida. La FIDE usa k-factors de 10, 20 y 40.
 
-El archivo *International_Chess_Stats.csv* contiene la información estadística de todos los países que tienen jugadores de ajedrez. Este archivo contiene 15 columnas:
+El archivo *"International_Chess_Stats.csv"* contiene la información estadística de todos los países que tienen jugadores de ajedrez. Este archivo contiene 15 columnas:
 - __[columna sin titulo]:__ _[Entero]._ Este es un índice que va de 0 a 189.
 - __#:__ _[Entero]._ Rank del país. Va de 1 a 190.
 - __Country:__ _[Texto]._ Nombre del país.
@@ -38,7 +38,7 @@ El archivo *International_Chess_Stats.csv* contiene la información estadística
 - __WFMs:__ _[Entero]._ Número de jugadores con titulo Woman FIDE Master en el país.
 - __Age Avg:__ _[Reales]._ Edad promedio de los jugadores.
 -----
-
+-----
 ## SISTEMA GESTOR DE BASE DE DATOS (SGBD)
 Un Sistema Gestor de Base de Datos es un software que permite a un usuario mediante una interfaz interactuar con bases de datos. 
 
