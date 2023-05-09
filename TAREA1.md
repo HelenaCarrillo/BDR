@@ -53,3 +53,11 @@ Entre otras de las ventajas que tiene el uso de MySQL se encuentra el hecho de q
 -----
 -----
 ### __REFERENCIAS__
+- International Chess Federation. (s.f.). _ABOUT FIDE_. FIDE. https://fide.com/fide/about-fide
+- Chess.com. (s.f.). _Chess Titles_. Chess.com. https://www.chess.com/terms/chess-titles
+- Chess Armory. (25 de mayo de 2019). _CHESS RATINGS EXPLAINED_. Chess Armory. https://chessarmory.com/blogs/chess-blog/chess-ratings-explained
+- PowerData. (09 de mayo de 2019). _¿Qué es un gestor de datos y para qué sirve?_. PowerData. https://blog.powerdata.es/el-valor-de-la-gestion-de-datos/que-es-un-gestor-de-datos-y-para-que-sirve
+- Canal Fredy Geek (5 de agosto del 2020). _SQL, SGBD, Servidores de Bases de Datos y lo mas importante, la información_. [Video]. Youtube. https://www.youtube.com/watch?v=-xeqMyQaqWs
+- Darias Pérez, S. (09 de septiembre de 2021). _Gestor de Base de Datos: Qué es, funcionalidades y ejemplos_. Intelequia. https://intelequia.com/blog/post/gestor-de-base-de-datos-qu%C3%A9-es-funcionalidades-y-ejemplos
+- Código SQL. (s.f.). _Ventajas y Desventajas de Mysql_. Código SQL. https://codigosql.top/ventajas-y-desventajas-de-mysql/
+- TecnoMagazine. (s.f.). _MySQL_. TecnoMagazine. https://tecnomagazine.net/mysql/
