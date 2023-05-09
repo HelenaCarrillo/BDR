@@ -37,5 +37,15 @@ El archivo *International_Chess_Stats.csv* contiene la información estadística
 - __WIMs:__ _[Entero]._ Número de jugadores con titulo Woman International Master en el país.
 - __WFMs:__ _[Entero]._ Número de jugadores con titulo Woman FIDE Master en el país.
 - __Age Avg:__ _[Reales]._ Edad promedio de los jugadores.
+-----
 
-## SGBD
+## SISTEMA GESTOR DE BASE DE DATOS (SGBD)
+Un Sistema Gestor de Base de Datos es un software que permite a un usuario mediante una interfaz interactuar con bases de datos. 
+
+Entre los SGBD más usados se encuentran MySQL, Oracle ans SQL Server. 
+
+Para este curso he elegido utilizar MySQL ya que es gratuito y es el sistema que se utilizará durante clases lo que creo que facilitará mi entendimiento al ser principiante en el uso de SQL.
+
+MySQL es un software de código abierto propiedad de Oracle. 
+
+Entre otras de las ventajas que tiene el uso de MySQL se encuentra el hecho de que es fácil de instalar, rápido, escalable y compatible con una gran variedad de sistemas operativos. 
