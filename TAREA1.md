@@ -1,7 +1,7 @@
 # TAREA 1
 
 ## BASE DE DATOS ELEGIDA
-La base de datos a utilizar es la llamada **International Chess Statistics 2022**.
+La base de datos a utilizar es la llamada **International Chess Statistics 2022** a la cual se puede acceder en la siguiente [liga](https://www.kaggle.com/datasets/deepcontractor/international-chess-statistics-2022).
 
 La base de datos cuenta con dos archivos csv: *Complete_Players_Database.csv* y *International_Chess_Stats.csv*.
 
