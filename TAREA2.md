@@ -15,7 +15,7 @@ flowchart
     id2[Country]--1---r1{Belong}
     r1--N---id1
     id1---j6([Country Rank])
-    j6---dj6{{"Entero[1,190]"}}
+    j6---dj6{{"Entero[1,inf)"}}
     jc2---djc2{{"Text(50)"}}
     r1---jc2([Country Name])
     id2---c1([Flag])
@@ -25,13 +25,23 @@ flowchart
     id2---c3([Women])
     c3---dc3{{"Entero[0,inf)"}}
     id2---c4([% od Women])
+    c4---dc4{{"Real[0,1]"}}
     id2---c5([FIDE Average])
+    c5---dc5{{"Real[0,inf)"}}
     id2---c6([GMs])
+    c6---dc6{{"Entero[0,inf)"}}
     id2---c7([IMs])
+    c7---dc7{{"Entero[0,inf)"}}
     id2---c8([FMs])
+    c8---dc8{{"Entero[0,inf)"}}
     id2---c9([WGMs])
+    c9---dc9{{"Entero[0,inf)"}}
     id2---c10([WIMs])
+    c10---dc10{{"Entero[0,inf)"}}
     id2---c11([WFMs])
+    c11---dc11{{"Entero[0,inf)"}}
+    id2---c12(["#"])
+    c12---dc12{{"Entero[1,190]"}}
 
 
 ```
