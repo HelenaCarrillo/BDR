@@ -48,4 +48,6 @@ flowchart
     c12---dc12{{"Entero[1,190]"}}
     id2---c13(["Country Name"])
     c13---dc13{{"Text(50)"}}
+    id2---c14([Age Avg])
+    c14---dc14{{"Real[0,inf)"}}  
 ```
