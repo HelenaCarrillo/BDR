@@ -16,8 +16,12 @@ flowchart
     r1--N---id1
     id1---j6([Country Rank])
     j6---dj6{{"Entero[1,inf)"}}
-    jc2---djc2{{"Text(50)"}}
-    r1---jc2([Country Name])
+    id1---j7(["ID Jugador"])
+    j7---dj7{{"Entero[0,inf)"}}
+    id1---j8(["Country Name"])
+    j8---dj8{{"Text(50)"}}
+    jc2---djc2{{"Entero[0,189]"}}
+    r1---jc2([ID Country])
     id2---c1([Flag])
     c1---dc1{{Imagen}}
     id2---c2([Num Players])
@@ -42,6 +46,6 @@ flowchart
     c11---dc11{{"Entero[0,inf)"}}
     id2---c12(["#"])
     c12---dc12{{"Entero[1,190]"}}
-
-
+    id2---c13(["Country Name"])
+    c13---dc13{{"Text(50)"}}
 ```
