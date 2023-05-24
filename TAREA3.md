@@ -46,8 +46,8 @@ COUNTRY {
 
           Country[Name]
  $\Pi$~Name~(Country)
-$\prod_Name$(Country)
-SO~~4~~
+$\prod_name$(Country)
+SO~0~  SO_{Name}
 
 2. Proyección de países con jugadores menores de edad:
 
