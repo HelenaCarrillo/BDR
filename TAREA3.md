@@ -45,7 +45,8 @@ COUNTRY {
 1. Proyección de los paises que tienen jugadorez de ajedréz registrados en FIDE:
 
           Country[Name]
-          $\prod$ (Country)
+ $\prod$ (Country)
+$\prod_Name$
 
 2. Proyección de países con jugadores menores de edad:
 
