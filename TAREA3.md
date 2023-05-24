@@ -44,22 +44,26 @@ COUNTRY {
 ## Operaciones
 1. Proyección de los paises que tienen jugadorez de ajedréz registrados en FIDE:
 
-        Country[Name]
      $\prod_{Name}$(Country)
+
+       Country[Name]
 
 
 2. Proyección de países con jugadores menores de edad:
 
-        Player[Age<18][Country_Name]
      $\prod_{CountryName}$ ($\sigma_{Age<18}$(Player))
+
+       Player[Age<18][Country_Name]
      
         
 3. Proyección de paises con jugadoras mujeres
 
-        Country[Women>0][Name]
-    $\prod_{Name}$ ($\sigma_{Women>0}$(Country))
+     $\prod_{Name}$ ($\sigma_{Women>0}$(Country))
+
+       Country[Women>0][Name]
 
 4. Proyección del Top 10 ranking de países
 
-        Country[Rank<=10][Name]
-    $\prod_{Name}$ ($\sigma_{Rank<=10}$(Country))
+     $\prod_{Name}$ ($\sigma_{Rank<=10}$(Country))
+
+       Country[Rank<=10][Name]
