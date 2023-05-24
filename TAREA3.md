@@ -3,7 +3,7 @@
 
 Player(**ID**,Name, Country_Rank, Title, Country_Name, FIDE, Age, K-Factor, ID_Country)
 
-Country(**ID**, Rank, Country_Name, Flag, Num_Players, Women, Perc_of_Women, FIDE_Average, GMs, FMs, IMs, WGMs, WFMs, WIMs, Age_Avg)
+Country(**ID**, Rank, Name, Flag, Num_Players, Women, Perc_of_Women, FIDE_Average, GMs, FMs, IMs, WGMs, WFMs, WIMs, Age_Avg)
 
 ## Diagrama
 ```mermaid
@@ -25,7 +25,7 @@ PLAYER{
 COUNTRY {
     entero ID PK "[0,inf)"
     entero Rank "[1,190]" 
-    text(50) Country_Name
+    text(50) Name
     image Flag 
     entero Num_Players "[0,inf)"
     entero Women "[0,inf)"
@@ -42,3 +42,18 @@ COUNTRY {
 ```
 
 ## Operaciones
+1. Proyección de los paises que tienen jugadorez de ajedréz registrados en FIDE:
+
+          Country[Name]
+
+2. Proyección de países con jugadores menores de edad:
+
+         Player[Age<18][Country_Name]
+        
+3. Proyección de paises con jugadoras mujeres
+
+         Country[Women>0][Name]
+
+4. Proyección del Top 10 ranking de países
+
+         Country[Rank<=10][Name]
