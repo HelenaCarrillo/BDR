@@ -1,14 +1,16 @@
 # TAREA 3
-Player(****ID_Player**,Name, Country_Rank, Title, Country_Name, FIDE, Age, K-Factor,ID_Country_Country )
+## Relaciones
 
-Country(**ID_Country**, Rank, Country_Name, Flag, Num_Players, Women, Perc_of_Women, FIDE_Average, GMs, FMs, IMs, WGMs, WFMs, WIMs, Age_Avg)
+Player(****ID**,Name, Country_Rank, Title, Country_Name, FIDE, Age, K-Factor,ID_Country )
+
+Country(**ID**, Rank, Country_Name, Flag, Num_Players, Women, Perc_of_Women, FIDE_Average, GMs, FMs, IMs, WGMs, WFMs, WIMs, Age_Avg)
 
 ## Diagrama
 ```mermaid
 erDiagram
 PLAYER}|--||COUNTRY:belongs
 PLAYER{
-    entero ID_Player PK "[0,inf)"
+    entero ID PK "[0,inf)"
     text(50) Name
     entero Country_Rank "[1,inf)"
     text(50) Title
@@ -21,7 +23,7 @@ PLAYER{
 }
     
 COUNTRY {
-    entero ID_Country PK "[0,inf)"
+    entero ID PK "[0,inf)"
     entero Rank "[1,190]" 
     text(50) Country_Name
     image Flag 
