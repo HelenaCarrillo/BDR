@@ -9,3 +9,4 @@ A continuación se presenta una tabla de contenidos:
 - [Tarea 2](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA2.md)
 - [Tarea 3](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA3.md)
 - [Tarea 4](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA4.sql)
+- [Tarea 5](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA5.md)
