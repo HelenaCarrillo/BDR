@@ -16,7 +16,7 @@ Para esto se usó la siguiente instrucción para mostrarlos ordenados de forma d
 
 Dicha instrucción nos arroja el siguiente resultado:
 
-```
+# ```
 +------------+-----------+
 | playstyle  | frequency |
 +------------+-----------+
@@ -34,7 +34,7 @@ Dicha instrucción nos arroja el siguiente resultado:
 | Warden     |         6 |
 | Artillery  |         4 |
 +------------+-----------+
-```
+# ```
 
 ## Media
 
