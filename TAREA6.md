@@ -124,5 +124,85 @@ Para calular un cuantil
 
 
 ## Moda
+Para obtener la moda se siguió primero un procedimiento parecido para imprimir las frecuencias cambiando la etiqueta de _frequency_ a _mode_ y limitando la selección al primer elemento:
 
+        SELECT playstyle, COUNT(playstyle) AS mode FROM champion_def GROUP BY playstyle ORDER BY COUNT(playstyle) DESC LIMIT 1;
+
+El resultado obtenido fue el siguiente:
+
+````
++-----------+------+
+| playstyle | mode |
++-----------+------+
+| Marksman  |   23 |
++-----------+------+
+````
+
+
+| playstyle | mode |
+|-----------|-----:|
+| Marksman  |   23 |
+
+Después se pensó en utilizar la función de agrupamiento MAX() para indicar que se seleccionara el maximo de las frecuencias.
+
+El primer intento se hizo con la instrucción:
+
+        SELECT playstyle, COUNT(playstyle) AS mode FROM champion_def GROUP BY playstyle HAVING MAX(COUNT(playstyle));
+
+Sin embargo al ser MAX() y COUNT() ambas funciones de agregamiento anidarlas no es posible.
+
+Una breve busqueda en internet reveló que una alternativa a la anidación de las funciones es la "anidación" de los SELECT. 
+
+La logica detrás de la amidación es primero se crea una _tabla temporal_ de consulta con una instrucción (SELECT) parecida a la usada en la impresión de las frecuencias y después esta _tabla temporal_ se usa en lugar de las tablas originales de la base de datos para la otra instrucción (SELECT) donde se obtiene el valor máximo.
+
+La instrucción utilizada es la siguiente:
+
+        SELECT MAX(frequency) AS mode FROM (SELECT playstyle, COUNT(playstyle) FROM champion_def GROUP BY playstyle);
+
+Lamentablemente esta instrucción también generó un error:
+
+        ERROR 1248 (42000): Every derived table must have its own alias
+
+Nuevamente, una busqueda en internet aclaró que la causa es que cada _subquery_ o _tabla temporal_ tiene que tener asignado un nombre. Esto es facilmente corregible usando la instrucción AS.
+
+Al usarse la instrucción corregida:
+
+        SELECT MAX(frequency) AS mode FROM (SELECT playstyle, COUNT(playstyle) FROM champion_def GROUP BY playstyle) as frecuencias;
+
+Se obtuvo lo siguiente:
+````
++------+
+| mode |
++------+
+|   23 |
++------+
+````
+
+Sin embargo lo que se busca es que también nos diga el estilo de juego correspondiente.
+
+Se intentó utilizar la instrucción:
+
+        SELECT playstyle, MAX(frequency) AS mode FROM (SELECT playstyle, COUNT(playstyle) FROM champion_def GROUP BY playstyle) as frecuencias;
+
+Sin embargo se originó el siguiente error:
+
+        ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'frecuencias.style'; this is incompatible with sql_mode=only_full_group_by
+
+Se decidió cambiar el acercamiento al problema y se optó por combinar dos metodos previamente vistos. Se buscaría generar nuevamente una tabla de frecuencias y limitarla, sin embargo en lugar de ordenarla y mostrar el primer valor se mostraría solo el valor que represente la frecuencia máxima al igualarlo a los SELECT anteriores.
+
+Finalmente, la instrucción a utilizar fue:
+
+        SELECT playstyle, COUNT(playstyle) AS mode FROM champion_def GROUP BY playstyle HAVING mode = (SELECT MAX(frequency) AS mode FROM (SELECT playstyle, COUNT(playstyle) AS frequency FROM champion_def GROUP BY playstyle) AS frecuencias);
+
+Y el resultado obtenido fue:
+
+````
++-----------+------+
+| playstyle | mode |
++-----------+------+
+| Marksman  |   23 |
++-----------+------+
+````
+
+----
 Hallazgos, dificultades, soluciones encontradas en línea. ETC. 
