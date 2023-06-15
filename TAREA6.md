@@ -120,7 +120,43 @@ El resultado fue el siguiente:
 ---
 
 ## Cuantil distinto a la media
-Para calular un cuantil
+Para calular un cuantil se tienen que ordenar los datos de forma ascendente y obtener la posición buscada.
+
+Por ejemplo para calcular el primer cuartil se obtiene el numero total de datos. Podemos calcularla con la siguinete intrucción:
+
+        SELECT COUNT(blue_essence_price) FROM champion_def;
+
+El resultado es:
+
+````
++---------------------------+
+| COUNT(blue_essence_price) |
++---------------------------+
+|                       163 |
++---------------------------+
+````
+Al dividir esta cantidad entre 4 para calcular el numero de datos de cada cuartil obtenemos:
+
+        SELECT ROUND((SELECT COUNT(blue_essence_price) FROM champion_def) / 4) AS 'first_quartile';
+
+````
++----------------+
+| first_quartile |
++----------------+
+|             41 |
++----------------+
+````
+Ahora es posible obtener el numero que pertenece al primer cuartil si ordenamos los datos y pedimos que obtenga el numero en la posición obtenida:
+
+        SELECT blue_essence_price AS 'first quartile' FROM champion_def ORDER BY blue_essence_price ASC LIMIT 40,1;
+
+````
++----------------+
+| first quartile |
++----------------+
+|           3150 |
++----------------+
+````
 
 
 ## Moda
@@ -205,4 +241,4 @@ Y el resultado obtenido fue:
 ````
 
 ----
-Hallazgos, dificultades, soluciones encontradas en línea. ETC. 
+ 
