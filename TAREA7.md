@@ -132,6 +132,37 @@ Para evitar posible perdida de datos se realizaron primero columnas prueba de ca
     ALTER TABLE champion_m_stats ADD prueba_win_rate float AFTER win_rate;
     UPDATE champion_m_stats SET prueba_win_rate = win_rate;
 
+After un análisis más detallado se descubrió que existen registros de un mismo champeón durante la misma temporada bajo dos tipos de eventos: _Play in_ y _Main_. 
+
+Bajo esta misma condición se revisaron nuevamente si existen registros con matches registrados que no se ven reflejados en las estadicticas de *champ_m_stats*:
+
+    SET @nom = (SELECT champ_name FROM champion_m_stats WHERE played_games = 0 LIMIT 51,1);
+
+    SET @ssn = (SELECT season FROM champion_m_stats WHERE played_games = 0 LIMIT 51,1);
+
+    SET @evt= (SELECT event FROM champion_m_stats WHERE played_games = 0 LIMIT 51,1);
+
+    -- ver datos con información
+    SELECT * FROM match_stats WHERE 
+    (pick_1_blue_team = @nom AND season = @ssn AND event = @evt) OR 
+    (pick_2_blue_team = @nom AND season = @ssn AND event = @evt) OR
+    (pick_3_blue_team = @nom AND season = @ssn AND event = @evt) OR
+    (pick_4_blue_team = @nom AND season = @ssn AND event = @evt) OR
+    (pick_5_blue_team = @nom AND season = @ssn AND event = @evt) OR
+    (pick_1_red_team = @nom AND season = @ssn AND event = @evt) OR
+    (pick_2_red_team = @nom AND season = @ssn AND event = @evt) OR
+    (pick_3_red_team = @nom AND season = @ssn AND event = @evt) OR
+    (pick_4_red_team = @nom AND season = @ssn AND event = @evt) OR
+    (pick_5_red_team = @nom AND season = @ssn AND event = @evt)
+    ;
+
+Bajo esta misma condición no hay registros incorrectos por lo que se eliminan las columnas de prueba:
+
+    ALTER TABLE champion_m_stats DROP COLUMN prueba_played;
+    ALTER TABLE champion_m_stats DROP COLUMN prueba_win;
+    ALTER TABLE champion_m_stats DROP COLUMN prueba_lose;
+    ALTER TABLE champion_m_stats DROP COLUMN prueba_win_rate;
+
 
 ---
 
