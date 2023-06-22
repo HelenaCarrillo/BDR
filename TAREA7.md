@@ -163,9 +163,15 @@ Bajo esta misma condición no hay registros incorrectos por lo que se eliminan l
     ALTER TABLE champion_m_stats DROP COLUMN prueba_lose;
     ALTER TABLE champion_m_stats DROP COLUMN prueba_win_rate;
 
-
 ---
 
-- match_stats 
+## match_stats
+Existen datos NULL para las columnas:
+- ban_4_blue_team
+- ban_5_blue_team
+- ban_4_red_team
+- ban_5_red_team
 
+Ya que en algunos match solo se prohiben hasta 3 caracters. Bajo esta condición se dejará el dato como NULL.
 
+---
