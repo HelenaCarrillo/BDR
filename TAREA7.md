@@ -120,6 +120,18 @@ Se busca corregir los datos posibles que en esta ocasión solo es posible obtene
 
 Para evitar posible perdida de datos se realizaron primero columnas prueba de cada una:
 
+    ALTER TABLE champion_m_stats ADD prueba_played float AFTER played_games;
+    UPDATE champion_m_stats SET prueba_played = played_games;
+
+    ALTER TABLE champion_m_stats ADD prueba_win float AFTER win;
+    UPDATE champion_m_stats SET prueba_win = champion_m_stats.win;
+
+    ALTER TABLE champion_m_stats ADD prueba_lose float AFTER lose;
+    UPDATE champion_m_stats SET prueba_lose = lose;
+
+    ALTER TABLE champion_m_stats ADD prueba_win_rate float AFTER win_rate;
+    UPDATE champion_m_stats SET prueba_win_rate = win_rate;
+
 
 ---
 
