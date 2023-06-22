@@ -11,3 +11,5 @@ A continuación se presenta una tabla de contenidos:
 - [Tarea 4](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA4.sql)
 - [Tarea 5](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA5.md)
 - [Tarea 6](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA6.md)
+-[Tarea 7 md](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA7.md)
+-[Tarea 7 sql](https://github.com/HelenaCarrillo/BDR/blob/master/tarea7script.sql)
