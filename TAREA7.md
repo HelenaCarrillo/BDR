@@ -66,8 +66,28 @@ Se encontraron valores NULL en todas las columnas, sin embargo en muchas ocasion
 
     SELECT * FROM champion_m_stats WHERE played_games = 0;
 
-Para comprobar que efectivamente no hay datos para estos registros se probaron con algunos casos:
+Esto da como resultado 52 registros.
 
+Para comprobar que efectivamente no hay datos para estos registros se probaron todos los casos (números del 0 a 51) en la tabla de *match_stats*:
+
+    SET @nom = (SELECT champ_name FROM champion_m_stats WHERE played_games = 0 LIMIT 0,1);
+
+    SET @ssn = (SELECT season FROM champion_m_stats WHERE played_games = 0 LIMIT 0,1);
+
+    SELECT @nom, @ssn;
+
+    SELECT * FROM match_stats WHERE 
+    (pick_1_blue_team = @nom AND season = @ssn) OR 
+    (pick_2_blue_team = @nom AND season = @ssn) OR
+    (pick_3_blue_team = @nom AND season = @ssn) OR
+    (pick_4_blue_team = @nom AND season = @ssn) OR
+    (pick_5_blue_team = @nom AND season = @ssn) OR
+    (pick_1_red_team = @nom AND season = @ssn) OR
+    (pick_2_red_team = @nom AND season = @ssn) OR
+    (pick_3_red_team = @nom AND season = @ssn) OR
+    (pick_4_red_team = @nom AND season = @ssn) OR
+    (pick_5_red_team = @nom AND season = @ssn)
+    ;
 
 
 - champion_m_stats
