@@ -66,6 +66,7 @@ Se encontraron valores NULL en todas las columnas, sin embargo en muchas ocasion
 
     SELECT * FROM champion_m_stats WHERE played_games = 0;
 
+
 Esto da como resultado 52 registros.
 
 Para comprobar que efectivamente no hay datos para estos registros se probaron todos los casos (números del 0 a 51) en la tabla de *match_stats*:
@@ -89,8 +90,39 @@ Para comprobar que efectivamente no hay datos para estos registros se probaron t
     (pick_5_red_team = @nom AND season = @ssn)
     ;
 
+Se encontró una serie de elementos que aparecían con 0 juegos en la temporada a pesar de tener registros en la tabla de *match_stats*:
 
-- champion_m_stats
+- 19,1 Jax 8
+- 20,1 Sivir 8
+- 22,1 Drius 8
+- 23,1 Pyke 8
+- 24,1 Jax 9
+- 25,1 Vayne 9
+- 26,1 Pantheon 9
+- 27,1 Braum 9
+- 28,1 Jhin 9
+- 30,1 Blitzcrank 10
+- 31,1 LeBlanc 10
+- 32,1 Lux 10
+- 34,1 Quinn 10
+- 35,1 VelKoz 10
+- 36,1 Swain 10
+- 38,1 Morgana 10
+- 39,1 Kassadin 11
+- 40,1 Yuumi 11
+- 41,1 Ziggs 11
+
+Se busca corregir los datos posibles que en esta ocasión solo es posible obtener la información correspondiente a las columnas:
+- played_games
+- win
+- lose
+- win_rate
+
+Para evitar posible perdida de datos se realizaron primero columnas prueba de cada una:
+
+
+---
+
 - match_stats 
 
 
