@@ -52,127 +52,125 @@ ALTER TABLE champion_def DROP COLUMN pruebaa;
 SELECT * FROM champion_m_stats;
 SELECT * FROM champion_m_stats WHERE played_games = 0;
 
-SET @nom = (SELECT champ_name FROM champion_m_stats WHERE played_games = 0 LIMIT 32,1);
-SET @ssn = (SELECT season FROM champion_m_stats WHERE played_games = 0 LIMIT 32,1);
-SET @evt= (SELECT event FROM champion_m_stats WHERE played_games = 0 LIMIT 32,1);
-SELECT @nom, @ssn;
+SET @nom = (SELECT champ_name FROM champion_m_stats WHERE played_games = 0 LIMIT 51,1);
+SET @ssn = (SELECT season FROM champion_m_stats WHERE played_games = 0 LIMIT 51,1);
+SET @evt= (SELECT event FROM champion_m_stats WHERE played_games = 0 LIMIT 51,1);
+SELECT @nom, @ssn, @evt;
 
 -- ver datos con información
 SELECT * FROM match_stats WHERE 
-(pick_1_blue_team = @nom AND season = @ssn) OR 
-(pick_2_blue_team = @nom AND season = @ssn) OR
-(pick_3_blue_team = @nom AND season = @ssn) OR
-(pick_4_blue_team = @nom AND season = @ssn) OR
-(pick_5_blue_team = @nom AND season = @ssn) OR
-(pick_1_red_team = @nom AND season = @ssn) OR
-(pick_2_red_team = @nom AND season = @ssn) OR
-(pick_3_red_team = @nom AND season = @ssn) OR
-(pick_4_red_team = @nom AND season = @ssn) OR
-(pick_5_red_team = @nom AND season = @ssn)
+(pick_1_blue_team = @nom AND season = @ssn AND event = @evt) OR 
+(pick_2_blue_team = @nom AND season = @ssn AND event = @evt) OR
+(pick_3_blue_team = @nom AND season = @ssn AND event = @evt) OR
+(pick_4_blue_team = @nom AND season = @ssn AND event = @evt) OR
+(pick_5_blue_team = @nom AND season = @ssn AND event = @evt) OR
+(pick_1_red_team = @nom AND season = @ssn AND event = @evt) OR
+(pick_2_red_team = @nom AND season = @ssn AND event = @evt) OR
+(pick_3_red_team = @nom AND season = @ssn AND event = @evt) OR
+(pick_4_red_team = @nom AND season = @ssn AND event = @evt) OR
+(pick_5_red_team = @nom AND season = @ssn AND event = @evt)
 ;
 
--- games played
-SELECT COUNT(season) FROM match_stats WHERE
-(pick_1_blue_team = @nom AND season = @ssn) OR 
-(pick_2_blue_team = @nom AND season = @ssn) OR
-(pick_3_blue_team = @nom AND season = @ssn) OR
-(pick_4_blue_team = @nom AND season = @ssn) OR
-(pick_5_blue_team = @nom AND season = @ssn) OR
-(pick_1_red_team = @nom AND season = @ssn) OR
-(pick_2_red_team = @nom AND season = @ssn) OR
-(pick_3_red_team = @nom AND season = @ssn) OR
-(pick_4_red_team = @nom AND season = @ssn) OR
-(pick_5_red_team = @nom AND season = @ssn)
-;
-
--- wins
-SELECT COUNT(season) FROM match_stats WHERE
-(pick_1_blue_team = @nom AND season = @ssn AND winner = blue_team) OR 
-(pick_2_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_3_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_4_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_5_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_1_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_2_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_3_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_4_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_5_red_team = @nom AND season = @ssn AND winner = red_team)
-;
-
--- win ratio
-SELECT (SELECT COUNT(season) FROM match_stats WHERE
-(pick_1_blue_team = @nom AND season = @ssn AND winner = blue_team) OR 
-(pick_2_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_3_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_4_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_5_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_1_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_2_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_3_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_4_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_5_red_team = @nom AND season = @ssn AND winner = red_team))/(SELECT COUNT(season) FROM match_stats WHERE
-(pick_1_blue_team = @nom AND season = @ssn) OR 
-(pick_2_blue_team = @nom AND season = @ssn) OR
-(pick_3_blue_team = @nom AND season = @ssn) OR
-(pick_4_blue_team = @nom AND season = @ssn) OR
-(pick_5_blue_team = @nom AND season = @ssn) OR
-(pick_1_red_team = @nom AND season = @ssn) OR
-(pick_2_red_team = @nom AND season = @ssn) OR
-(pick_3_red_team = @nom AND season = @ssn) OR
-(pick_4_red_team = @nom AND season = @ssn) OR
-(pick_5_red_team = @nom AND season = @ssn)) AS win_ratio;
-
--- loses
-SELECT (SELECT COUNT(season) FROM match_stats WHERE
-(pick_1_blue_team = @nom AND season = @ssn) OR 
-(pick_2_blue_team = @nom AND season = @ssn) OR
-(pick_3_blue_team = @nom AND season = @ssn) OR
-(pick_4_blue_team = @nom AND season = @ssn) OR
-(pick_5_blue_team = @nom AND season = @ssn) OR
-(pick_1_red_team = @nom AND season = @ssn) OR
-(pick_2_red_team = @nom AND season = @ssn) OR
-(pick_3_red_team = @nom AND season = @ssn) OR
-(pick_4_red_team = @nom AND season = @ssn) OR
-(pick_5_red_team = @nom AND season = @ssn))-(SELECT COUNT(season) FROM match_stats WHERE
-(pick_1_blue_team = @nom AND season = @ssn AND winner = blue_team) OR 
-(pick_2_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_3_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_4_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_5_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
-(pick_1_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_2_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_3_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_4_red_team = @nom AND season = @ssn AND winner = red_team) OR
-(pick_5_red_team = @nom AND season = @ssn AND winner = red_team)) AS loses;
-
-
-
-
-
-
-SET @nom = (SELECT champ_name FROM champion_m_stats WHERE played_games = 0 LIMIT 27,1);
-SET @ssn = (SELECT season FROM champion_m_stats WHERE played_games = 0 LIMIT 27,1);
-SELECT @nom, @ssn;
-
--- ver datos con información erronea flag
-SELECT IF(((SELECT COUNT(*) FROM match_stats WHERE 
-(pick_1_blue_team = @nom AND season = @ssn) OR 
-(pick_2_blue_team = @nom AND season = @ssn) OR
-(pick_3_blue_team = @nom AND season = @ssn) OR
-(pick_4_blue_team = @nom AND season = @ssn) OR
-(pick_5_blue_team = @nom AND season = @ssn) OR
-(pick_1_red_team = @nom AND season = @ssn) OR
-(pick_2_red_team = @nom AND season = @ssn) OR
-(pick_3_red_team = @nom AND season = @ssn) OR
-(pick_4_red_team = @nom AND season = @ssn) OR
-(pick_5_red_team = @nom AND season = @ssn))!= 0),
-
-
-"YES"
-, 
-"NO"
-) AS aplica
-;
+-- PRUEBAS PARA OBTENCIÓN DE DATOS CORRECTOS
+		-- games played
+		SELECT COUNT(season) FROM match_stats WHERE
+		(pick_1_blue_team = @nom AND season = @ssn) OR 
+		(pick_2_blue_team = @nom AND season = @ssn) OR
+		(pick_3_blue_team = @nom AND season = @ssn) OR
+		(pick_4_blue_team = @nom AND season = @ssn) OR
+		(pick_5_blue_team = @nom AND season = @ssn) OR
+		(pick_1_red_team = @nom AND season = @ssn) OR
+		(pick_2_red_team = @nom AND season = @ssn) OR
+		(pick_3_red_team = @nom AND season = @ssn) OR
+		(pick_4_red_team = @nom AND season = @ssn) OR
+		(pick_5_red_team = @nom AND season = @ssn)
+		;
+		
+		-- wins
+		SELECT COUNT(season) FROM match_stats WHERE
+		(pick_1_blue_team = @nom AND season = @ssn AND winner = blue_team) OR 
+		(pick_2_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_3_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_4_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_5_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_1_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_2_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_3_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_4_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_5_red_team = @nom AND season = @ssn AND winner = red_team)
+		;
+		
+		-- win ratio
+		SELECT (SELECT COUNT(season) FROM match_stats WHERE
+		(pick_1_blue_team = @nom AND season = @ssn AND winner = blue_team) OR 
+		(pick_2_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_3_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_4_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_5_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_1_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_2_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_3_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_4_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_5_red_team = @nom AND season = @ssn AND winner = red_team))/(SELECT COUNT(season) FROM match_stats WHERE
+		(pick_1_blue_team = @nom AND season = @ssn) OR 
+		(pick_2_blue_team = @nom AND season = @ssn) OR
+		(pick_3_blue_team = @nom AND season = @ssn) OR
+		(pick_4_blue_team = @nom AND season = @ssn) OR
+		(pick_5_blue_team = @nom AND season = @ssn) OR
+		(pick_1_red_team = @nom AND season = @ssn) OR
+		(pick_2_red_team = @nom AND season = @ssn) OR
+		(pick_3_red_team = @nom AND season = @ssn) OR
+		(pick_4_red_team = @nom AND season = @ssn) OR
+		(pick_5_red_team = @nom AND season = @ssn)) AS win_ratio;
+		
+		-- loses
+		SELECT (SELECT COUNT(season) FROM match_stats WHERE
+		(pick_1_blue_team = @nom AND season = @ssn) OR 
+		(pick_2_blue_team = @nom AND season = @ssn) OR
+		(pick_3_blue_team = @nom AND season = @ssn) OR
+		(pick_4_blue_team = @nom AND season = @ssn) OR
+		(pick_5_blue_team = @nom AND season = @ssn) OR
+		(pick_1_red_team = @nom AND season = @ssn) OR
+		(pick_2_red_team = @nom AND season = @ssn) OR
+		(pick_3_red_team = @nom AND season = @ssn) OR
+		(pick_4_red_team = @nom AND season = @ssn) OR
+		(pick_5_red_team = @nom AND season = @ssn))-(SELECT COUNT(season) FROM match_stats WHERE
+		(pick_1_blue_team = @nom AND season = @ssn AND winner = blue_team) OR 
+		(pick_2_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_3_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_4_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_5_blue_team = @nom AND season = @ssn AND winner = blue_team) OR
+		(pick_1_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_2_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_3_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_4_red_team = @nom AND season = @ssn AND winner = red_team) OR
+		(pick_5_red_team = @nom AND season = @ssn AND winner = red_team)) AS loses;
+		
+				
+		SET @nom = (SELECT champ_name FROM champion_m_stats WHERE played_games = 0 LIMIT 27,1);
+		SET @ssn = (SELECT season FROM champion_m_stats WHERE played_games = 0 LIMIT 27,1);
+		SELECT @nom, @ssn;
+		
+		-- ver datos con información erronea flag
+		SELECT IF(((SELECT COUNT(*) FROM match_stats WHERE 
+		(pick_1_blue_team = @nom AND season = @ssn) OR 
+		(pick_2_blue_team = @nom AND season = @ssn) OR
+		(pick_3_blue_team = @nom AND season = @ssn) OR
+		(pick_4_blue_team = @nom AND season = @ssn) OR
+		(pick_5_blue_team = @nom AND season = @ssn) OR
+		(pick_1_red_team = @nom AND season = @ssn) OR
+		(pick_2_red_team = @nom AND season = @ssn) OR
+		(pick_3_red_team = @nom AND season = @ssn) OR
+		(pick_4_red_team = @nom AND season = @ssn) OR
+		(pick_5_red_team = @nom AND season = @ssn))!= 0),
+		
+		
+		"YES"
+		, 
+		"NO"
+		) AS aplica
+		;
+		
 
 -- crear columnas prueba para cambios
 ALTER TABLE champion_m_stats ADD prueba_played float AFTER played_games;
@@ -188,19 +186,27 @@ ALTER TABLE champion_m_stats ADD prueba_win_rate float AFTER win_rate;
 UPDATE champion_m_stats SET prueba_win_rate = win_rate;
 
 SELECT * FROM champion_m_stats WHERE champ_name = @nom AND season= @ssn;
--- ver datos con información erronea flag
-UPDATE champion_m_stats
-SET prueba_played = 45 
-WHERE champ_name = @nom AND season= @ssn AND played_games=0;
 
-UPDATE champion_m_stats
-SET prueba_win = 40 
-WHERE champ_name = @nom AND season= @ssn;
+-- PRUEBAS PARA CORREGIR DATOS
+			UPDATE champion_m_stats
+			SET prueba_played = 45 
+			WHERE champ_name = @nom AND season= @ssn AND played_games=0;
+			
+			UPDATE champion_m_stats
+			SET prueba_win = 40 
+			WHERE champ_name = @nom AND season= @ssn;
+			
+			UPDATE champion_m_stats
+			SET prueba_lose = prueba_played - prueba_win
+			WHERE champ_name = @nom AND season= @ssn;
+			
+			UPDATE champion_m_stats
+			SET prueba_win_rate = prueba_win / prueba_played 
+			WHERE champ_name = @nom AND season= @ssn;
 
-UPDATE champion_m_stats
-SET prueba_lose = prueba_played - prueba_win
-WHERE champ_name = @nom AND season= @ssn;
+-- eliminar columnas prueba
+ALTER TABLE champion_m_stats DROP COLUMN prueba_played;
+ALTER TABLE champion_m_stats DROP COLUMN prueba_win;
+ALTER TABLE champion_m_stats DROP COLUMN prueba_lose;
+ALTER TABLE champion_m_stats DROP COLUMN prueba_win_rate;
 
-UPDATE champion_m_stats
-SET prueba_win_rate = prueba_win / prueba_played 
-WHERE champ_name = @nom AND season= @ssn;
