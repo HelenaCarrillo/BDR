@@ -1,6 +1,15 @@
 # TAREA 8
-## Right Join
-Para facilitar la consulta de estadísticas de los campiones por tipo de clase y estilo de juego se hizo una vita llamada _championsstats_ con el código
+## Join y Right Join
+Para facilitar la consulta de estadísticas de los campiones por tipo de clase y estilo de juego se hizo una vita llamada _championsstats_ con el código:
+
+    DROP VIEW IF EXISTS championsstats;
+
+    CREATE VIEW championsstats AS
+	    SELECT * FROM champion_def AS iz
+	    JOIN champion_m_stats AS de
+	    ON iz.name_champ = de.champ_name;
+
+Esto también puede realizarse con RIGHT JOIN:
 
     DROP VIEW IF EXISTS championsstats;
 
@@ -9,7 +18,7 @@ Para facilitar la consulta de estadísticas de los campiones por tipo de clase y
 	    RIGHT JOIN champion_m_stats AS de
 	    ON iz.name_champ = de.champ_name;
 
-Al usar un Right Join se asegura que solo aquellos que tengan datos estadisticos esntrarán a la vista.
+Al usar un RIGHT JOIN se asegura que solo aquellos que tengan datos estadisticos en *champ_m_stats* entrarán a la vista.
 
 Una vez realizado esta vista se pueden realizar consultas para el análisis de las clases y tipos de juego como por ejemplo:
 
@@ -107,7 +116,6 @@ Considerando que al momento de actualizar la base de datos se hará desde *playe
 
     DELIMITER ;
 
-## Join
 
 ## Hallazgos
 
