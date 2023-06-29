@@ -13,26 +13,24 @@ Al usar un Right Join se asegura que solo aquellos que tengan datos estadisticos
 
 Una vez realizado esta vista se pueden realizar consultas para el análisis de las clases y tipos de juego como por ejemplo:
 
-El número de kills por clase:
-
+- El número de kills por clase:
+    ````
     SELECT class, round(sum(kills)) AS total_kills FROM championsstats 
 	    GROUP BY class ORDER BY total_kills DESC;
-
-El número de kills por clase y estilo de juego:
-
+- El número de kills por clase y estilo de juego:
+    ````
     SELECT class, playstyle, round(sum(kills)) AS total_kills FROM championsstats 
 	GROUP BY class, playstyle ORDER BY total_kills DESC;
-
-Lo mismo para el número de victorias:
-
+- Lo mismo para el número de victorias:
+    ````
     SELECT class, round(sum(win)) AS total_wins FROM championsstats 
 	    GROUP BY class ORDER BY total_wins DESC;
 
     SELECT class, playstyle, round(sum(win)) AS total_wins FROM championsstats 
 	    GROUP BY class, playstyle ORDER BY total_wins DESC;
+- Etcétera.
 
-
-## Join
+---
 
 ## Trigger, Left Join y Subconsulta
 
@@ -108,3 +106,21 @@ Considerando que al momento de actualizar la base de datos se hará desde *playe
     //
 
     DELIMITER ;
+
+## Join
+
+## Hallazgos
+
+Al momento de crear la vista _championsstats_ se encontraron irregularidades con los nombres de algunos de los registros en *class* y *playstyle* de la tabla *champ_def*. 
+
+Se corrigieron con el siguiente código:
+
+    UPDATE champion_def SET class = 'Controller' WHERE class = 'Controllerer';
+
+    UPDATE champion_def SET class = 'Mage' WHERE class = 'Mage Artillery';
+
+    UPDATE champion_def SET class = 'Controller' WHERE class= 'Support';
+
+Por otra parte, en la creación de TRIGGERS la aclaración de DELIMITER solo es necesaria si se ejecuta desde consola o si se ejecuta el script completo.
+
+FInalmente, las sentencias de BEGIN ... END se pueden usar para comenzar una serie de instrucciones dentro de un TRIGGER.
