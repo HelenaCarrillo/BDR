@@ -2,14 +2,22 @@ USE lol_stats;
 
 SHOW tables;
 
---- RIGHT Joins ensures ONLY champs WITH stats FROM MATCH will appear
+--- Crear JOINS
+DROP VIEW IF EXISTS championsstats;
+CREATE VIEW championsstats AS
+	SELECT * FROM champion_def AS iz
+	JOIN champion_m_stats AS de
+	ON iz.name_champ = de.champ_name;
 
+
+--- RIGHT Joins ensures ONLY champs WITH stats FROM MATCH will appear
 DROP VIEW IF EXISTS championsstats;
 CREATE VIEW championsstats AS
 	SELECT * FROM champion_def AS iz
 	RIGHT JOIN champion_m_stats AS de
 	ON iz.name_champ = de.champ_name;
 
+--- consultas posibles 
 SELECT class, round(sum(kills)) AS total_kills FROM championsstats 
 	GROUP BY class ORDER BY total_kills DESC;
 
@@ -18,8 +26,11 @@ SELECT class, playstyle, round(sum(kills)) AS total_kills FROM championsstats
 
 SELECT class, round(sum(win)) AS total_wins FROM championsstats 
 	GROUP BY class ORDER BY total_wins DESC;
+
 SELECT class, playstyle, round(sum(win)) AS total_wins FROM championsstats 
 	GROUP BY class, playstyle ORDER BY total_wins DESC;
+
+
 
 
 ---- TRIGGER, LEFT JOIN y subconsulta
@@ -95,6 +106,10 @@ SELECT player_name, SUM(games_played) FROM jugadores GROUP BY player_name; -- ju
 SELECT player_name, SUM(loses) FROM jugadores GROUP BY player_name;
 
 SELECT player_name, AVG(played_match), SUM(games_played) FROM jugadores GROUP BY player_name; -- juego jugados */
+
+
+
+
 
 
 /* CORRECCIONES ENCONTRADAS AL MOMETO DE TRABAJAR LOS DATOS
