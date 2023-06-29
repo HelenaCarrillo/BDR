@@ -95,7 +95,7 @@ Considerando que al momento de actualizar la base de datos se hará desde *playe
     FOR EACH ROW
      BEGIN
 	    UPDATE jugadores
-		    SET jugadores.seasons_played = jugadores.sseasons WHERE    jugadores.sseason > jugadores.seasons_played;
+		    SET jugadores.seasons_played = jugadores.sseasons WHERE jugadores.sseason > jugadores.seasons_played;
 	    UPDATE jugadores
 		    SET jugadores.wins_d = jugadores.swins WHERE jugadores.swins > jugadores.wins_d;
 	    UPDATE jugadores
