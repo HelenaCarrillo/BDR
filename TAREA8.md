@@ -38,3 +38,15 @@ Lo mismo para el número de victorias:
 ## Subconsulta
 
 ## Trigger
+
+Se intetó crear una vista con la indicación:
+
+    DROP VIEW IF EXISTS jugadores;
+
+    CREATE VIEW jugadores AS
+	    SELECT * FROM player_stats AS s
+	    LEFT JOIN player_def AS d 
+        ON s.player_name = d.player_name;
+
+Sin embargo se registró un error ya que ambas columnas tienen el mismo nombre por lo que se modificaron los nombres de la tabla *player_def*:
+
