@@ -2,16 +2,15 @@
 ## Distancia de levenshtein
 La **Distancia de Levenshtein** mide la cantidad mínima de cambios requeridos ya sea eliminación, sustitución o inserción para transfoemar una cadena de caracteres en otra.
 
-
 Esta dado por la ecuación:
 
-$$ \begin{align}
+$$` \begin{align}
 
 &|lev_{a,b}(i-1,j)+1\\\
 lev_{a,b}(i,j) = min\lbrace &|lev_{a,b}(i,j-1)+1\\
 &|lev_{a,b}(i-1,j-1)+1_{(ai\neq bj)}
 
-\end{align} $$   
+\end{align} `$$  
 
 Para facilitar los cálculos, esto puede resolverse con matrices. 
 
@@ -291,8 +290,8 @@ El procedimiento continuará usando la tercera y cuarta condición hasta que se 
 
 Al suceder esto se da por finalizados ambos ciclos y se devuelve el resultado de la última celda de la última fila al asignarla a *dist*.
 
-
+----
 ## Hallazgos
 - La declaración IF solo puede existir dentro de los procedimientos almacenados.
 
-- La función MIN solo funciona para vectores o columnas en tablas.
+- La función MIN() solo funciona para vectores o columnas en tablas.
