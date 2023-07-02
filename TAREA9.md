@@ -5,16 +5,15 @@ La **Distancia de Levenshtein** mide la cantidad mínima de cambios requeridos y
 
 Esta dado por la ecuación:
 
-````LaTex
 $$
 \begin{align}
 
 &|lev_{a,b}(i-1,j)+1\\\
 lev_{a,b}(i,j) = min\lbrace &|lev_{a,b}(i,j-1)+1\\
 &|lev_{a,b}(i-1,j-1)+1_{(ai\neq bj)}
+
 \end{align}
 $$   
-````
 
 Para facilitar los cálculos, esto puede resolverse con matrices. 
 
