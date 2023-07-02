@@ -5,15 +5,13 @@ La **Distancia de Levenshtein** mide la cantidad mínima de cambios requeridos y
 
 Esta dado por la ecuación:
 
-$$
-\begin{align}
+$$ \begin{align}
 
 &|lev_{a,b}(i-1,j)+1\\\
 lev_{a,b}(i,j) = min\lbrace &|lev_{a,b}(i,j-1)+1\\
 &|lev_{a,b}(i-1,j-1)+1_{(ai\neq bj)}
 
-\end{align}
-$$   
+\end{align} $$   
 
 Para facilitar los cálculos, esto puede resolverse con matrices. 
 
@@ -33,7 +31,7 @@ La matriz se resuelve de izquierda a derecha de froma descendiente y la distanci
 Comenzando a resolver la matriz, en la primera celda se pondrá el minimo entre: 
 - el número de arriba más uno ( $lev_{a,b}(i,j-1)+1$ ) 
 - el número a la izquierda más uno ( $lev_{a,b}(i-1,j)+1$ ) y 
-- el número en la diagonal al cuál se le sumará uno solo si los caractéres en i y j son diferentes, si son iguales se dejará como esta ( $ev_{a,b}(i-1,j-1)+1_{(ai\neq bj)}$ ).
+- el número en la diagonal al cuál se le sumará uno solo si los caractéres en i y j son diferentes, si son iguales se dejará como esta ($lev_{a,b}(i-1,j-1)+1_{(ai\neq bj)}$ ).
 
 Es así que en la primera celda del ejemplo se pone el mínimo entre 2 (arriba+1), 2 (izquiera+1) y 0 (diagonal):
 
