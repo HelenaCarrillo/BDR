@@ -17,3 +17,4 @@ A continuación se presenta una tabla de contenidos:
 - [Tarea 8 sql](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA8script.sql)
 - [Tarea 9 md](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA9.md)
 - [Tarea 9 sql](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA9script.sql)
+-[Tarea 10](https://github.com/HelenaCarrillo/BDR/blob/master/TAREA10.ipynb)
